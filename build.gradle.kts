@@ -20,6 +20,7 @@ kotlin {
     iosSimulatorArm64()
     iosX64()
     macosArm64() // for the Kotlin/Native benchmark in the minisat port
+    macosX64()
     linuxX64()
     mingwX64()
 
