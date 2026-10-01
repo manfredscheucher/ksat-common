@@ -13,15 +13,15 @@ solver repo and by the main repo.
 - `SatSolver` — the common interface every port implements (`addClause`, `solve`,
   `solve(assumptions)`, `valueOf`, `numVars`) plus `SatResult { SAT, UNSAT }`.
 - `Traceable` — the optional `setTraceSink` hook a port uses to emit its step-by-step
-  decision trace, for shadowing a port against its C reference.
+  decision trace (used to compare a port's run against its C original).
 - `DimacsCnf` — a DIMACS CNF parser (`DimacsCnf.parse`) and a model check
   (`isSatisfiedBy`).
 
 ## Where the rest is
 
-This repo is just the shared contract. The solver ports, the byte-for-byte shadow tests,
-the C references, the benchmarks, the `Ksat` facade and the docs all live in the main
-repo: **[sat-solvers-kotlin](https://github.com/manfredscheucher/sat-solvers-kotlin)**.
+This repo is just the shared contract. The solver ports, the trace-comparison tests, the
+C references, the benchmarks, the `Ksat` facade and the docs all live in the main project:
+**[sat-solvers-kotlin](https://github.com/manfredscheucher/sat-solvers-kotlin)**.
 
 ## License
 
