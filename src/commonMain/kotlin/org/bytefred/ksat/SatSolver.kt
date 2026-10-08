@@ -40,6 +40,19 @@ interface SatSolver {
 
     /** After a SAT result: true iff variable `v` (1..numVars) is assigned true. */
     fun valueOf(v: Int): Boolean
+
+    /**
+     * After an UNSAT result from [solve] under assumptions: true iff the signed DIMACS
+     * assumption [lit] is part of the failed core, i.e. it was (one of) the assumptions that
+     * made the formula inconsistent. This is IPASIR's `failed` / an UNSAT-core over the
+     * assumptions. Only meaningful for an assumption literal passed to the last solve.
+     *
+     * A solver that has not ported a failed-core routine throws. Not every upstream solver
+     * has one (e.g. kissat has no failed-assumption API), so this is not universally available.
+     */
+    fun failed(lit: Int): Boolean {
+        throw UnsupportedOperationException("this solver does not expose a failed-assumption core")
+    }
 }
 
 /**
