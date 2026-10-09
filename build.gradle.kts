@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.androidKmpLibrary)
 }
 
 // The shared base of the ksat SAT-solver ports: the `SatSolver` interface, `SatResult`,
@@ -8,7 +8,12 @@ plugins {
 // so it lives in its own repo and is consumed as a git submodule by each solver repo and
 // by the main sat-solvers-kotlin repo. See the README.
 kotlin {
-    androidTarget()
+    androidLibrary {
+        namespace = "org.bytefred.ksat.common"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        withHostTest {}
+    }
     jvm()
 
     js { browser(); nodejs() }
@@ -30,13 +35,5 @@ kotlin {
                 implementation(libs.kotlin.test)
             }
         }
-    }
-}
-
-android {
-    namespace = "org.bytefred.ksat.common"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
