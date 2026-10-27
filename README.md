@@ -15,7 +15,11 @@ solver repo and by the main repo.
 - `Traceable` — the optional `setTraceSink` hook a port uses to emit its step-by-step
   decision trace (used to compare a port's run against its C original).
 - `DimacsCnf` — a DIMACS CNF parser (`DimacsCnf.parse`) and a model check
-  (`isSatisfiedBy`).
+  (`isSatisfiedBy`). `parse` returns every clause of the text (the header's clause count is
+  not used to stop reading), `numVars` covers every literal, and malformed input (e.g.
+  `p wcnf`, a `%` tail, a last clause without `0`, a number outside the Int range) throws a
+  `DimacsParseException` with the line number. The accepted grammar and why (MiniSat's and
+  CaDiCaL's default parsers) are in the main repo's `ksat-extra/doc/minisat-full-port.md`.
 
 ## Where the rest is
 
