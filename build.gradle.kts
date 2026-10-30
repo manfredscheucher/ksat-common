@@ -6,7 +6,7 @@ plugins {
 // The shared base of the ksat SAT-solver ports: the `SatSolver` interface, `SatResult`,
 // the `Traceable` trace hook, and the DIMACS parser. Every solver port implements this,
 // so it lives in its own repo and is consumed as a git submodule by each solver repo and
-// by the main sat-solvers-kotlin repo. See the README.
+// by the main ksat repo. See the README.
 kotlin {
     androidLibrary {
         namespace = "org.bytefred.ksat.common"

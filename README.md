@@ -1,6 +1,6 @@
 # ksat-common
 
-The shared base of the [ksat](https://github.com/manfredscheucher/sat-solvers-kotlin)
+The shared base of the [ksat](https://github.com/manfredscheucher/ksat)
 SAT-solver ports: the `SatSolver` interface, `SatResult`, the `Traceable` trace hook,
 and the DIMACS parser. Package namespace is `org.bytefred.ksat`.
 
@@ -25,7 +25,7 @@ solver repo and by the main repo.
 
 This repo is just the shared contract. The solver ports, the trace-comparison tests, the
 C references, the benchmarks, the `Ksat` facade and the docs all live in the main project:
-**[sat-solvers-kotlin](https://github.com/manfredscheucher/sat-solvers-kotlin)**.
+**[ksat](https://github.com/manfredscheucher/ksat)**.
 
 ## License
 
